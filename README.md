@@ -18,16 +18,16 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Add your Locus API key to `.env.local`. The public docs mention `@locus/agent-sdk`, but that package was not available on npm during setup, so this app uses a small HTTP adapter controlled by `LOCUS_SESSION_CREATE_URL` until the SDK package is accessible.
+Add your Locus beta API key to `.env.local`. The public docs mention `@locus/agent-sdk`, but that package was not available on npm during setup, so this app uses a small HTTP adapter pointed at the confirmed beta checkout session endpoint.
 
 ```bash
 LOCUS_API_KEY=your_key_here
-LOCUS_SESSION_CREATE_URL=https://beta.paywithlocus.com/api/checkout/sessions
+LOCUS_SESSION_CREATE_URL=https://beta-api.paywithlocus.com/api/checkout/sessions
 NEXT_PUBLIC_URL=http://localhost:3000
 NEXT_PUBLIC_LOCUS_CHECKOUT_URL=https://beta.paywithlocus.com
 ```
 
-If `LOCUS_API_KEY` or `LOCUS_SESSION_CREATE_URL` is missing, the app creates mock checkout sessions so the demo flow still works locally.
+If `LOCUS_API_KEY` is missing, the app creates mock checkout sessions so the demo flow still works locally.
 
 ## Locus usage
 

@@ -13,9 +13,11 @@ export async function createCheckoutSession({ toolId, buyerId = "demo-buyer" }: 
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
-  const sessionCreateUrl = process.env.LOCUS_SESSION_CREATE_URL;
+  const sessionCreateUrl =
+    process.env.LOCUS_SESSION_CREATE_URL ||
+    "https://beta-api.paywithlocus.com/api/checkout/sessions";
 
-  if (!process.env.LOCUS_API_KEY || !sessionCreateUrl) {
+  if (!process.env.LOCUS_API_KEY) {
     return {
       id: `mock_${tool.id}_${Date.now()}`,
       amount: tool.price,
